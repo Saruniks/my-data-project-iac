@@ -10,7 +10,9 @@ pub fn synth_app(app: App) -> Result<(), Box<dyn std::error::Error>> {
         
         let json_pretty = serde_json::to_string_pretty(&template_json)?;
 
-        std::fs::create_dir("cdk.out")?;
+        if !std::path::Path::new("cdk.out").exists() {
+            std::fs::create_dir("cdk.out")?;
+        }
 
         let filename = format!("cdk.out/{}-template.json", stack.get_stack_name());
 
