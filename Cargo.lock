@@ -199,6 +199,7 @@ version = "0.1.0"
 dependencies = [
  "aws-cdk-lib",
  "constructs",
+ "serde_json",
 ]
 
 [[package]]

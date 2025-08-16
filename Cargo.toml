@@ -6,3 +6,4 @@ edition = "2024"
 [dependencies]
 aws-cdk-lib = { path = "/home/clear/jsii/output/rust/aws-cdk-lib", default-features = false, features = [ "cx_api", "aws_s3", "cloud_assembly_schema", "aws_kms", "aws_events", "aws_iam", "aws_sqs", "aws_cloudwatch" ] }
 constructs = { path = "/home/clear/jsii/output/rust/constructs", default-features = true }
+serde_json = "1.0.142"
