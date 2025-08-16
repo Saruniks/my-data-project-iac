@@ -1,3 +1,5 @@
+use aws_cdk_lib::App;
+
 fn main() {
-    println!("Hello, world!");
+    let _app = App::new(None);
 }
