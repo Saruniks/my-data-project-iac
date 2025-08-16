@@ -1,4 +1,4 @@
-use aws_cdk_lib::{aws_amplify::{self, CfnAppProps}, aws_s3};
+use aws_cdk_lib::{aws_amplify, aws_s3, aws_elasticbeanstalk, /* aws_cloudfront */};
 
 mod helpers;
 
@@ -10,9 +10,15 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let _bucket = aws_s3::Bucket::new(&stack, "MyDataProjectBucket".to_string(), None);
 
-    let _amplify = aws_amplify::CfnApp::new(&stack, "MyDataProjectAmplifyInstance".to_string(), CfnAppProps {
+    /* let _cloudfront = aws_cloudfront::CfnDistribution::new(&stack, "MyDataProjectCloudFront".to_string(), aws_cloudfront::CfnDistributionProps {
+        ..Default::default()
+    }); */
+
+    let _amplify = aws_amplify::CfnApp::new(&stack, "MyDataProjectAmplifyInstance".to_string(), aws_amplify::CfnAppProps {
         ..Default::default()
     });
+
+    let _elastic_beanstalk = aws_elasticbeanstalk::CfnApplication::new(&stack, "MyDataProjectElasticBeanstalk".to_string(), None);
 
     helpers::synth_app(app)?;
 
