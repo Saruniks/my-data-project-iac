@@ -5,7 +5,36 @@ edition = "2024"
 
 [dependencies]
 aws-cdk-lib = { path = "/home/clear/jsii/output/rust/aws-cdk-lib", default-features = false, features = [ 
-    "cx_api", "aws_s3", "cloud_assembly_schema", "aws_kms", "aws_events", "aws_iam", "aws_sqs", "aws_cloudwatch", "aws_amplify", "aws_elasticbeanstalk",
+    "cx_api", 
+    "aws_s3", 
+    "aws_s3_assets",
+    "cloud_assembly_schema", 
+    "aws_kms", 
+    "aws_events", 
+    "aws_iam", 
+    "aws_sqs", 
+    "aws_cloudwatch", 
+    "aws_amplify", 
+    "aws_elasticbeanstalk", 
+    "aws_ec2", 
+    "aws_ssm",
+    "aws_logs",
+    "aws_rds",
+    "aws_secretsmanager",
+    "aws_lambda",
+    "aws_applicationautoscaling",
+    "aws_codeguruprofiler",
+    "aws_sns",
+    "aws_efs",
+    "aws_codestarnotifications",
+    "aws_ecr",
+    "aws_signer",
+    "aws_cloudfront",
+    "aws_elasticloadbalancingv2",
+    "aws_certificatemanager",
+    "aws_kinesis",
+    "aws_acmpca",
+    "aws_route53",
 ] }
 constructs = { path = "/home/clear/jsii/output/rust/constructs", default-features = true }
 serde_json = "1.0.142"
