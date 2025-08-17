@@ -4,13 +4,19 @@ mod frontend;
 mod backend;
 mod database;
 
-use aws_cdk_lib::{aws_amplify, aws_elasticbeanstalk, aws_rds};
 use object_store::ObjectStore;
 use reverse_proxy::ReverseProxy;
 use frontend::Frontend;
 use backend::Backend;
 use database::Database;
 
+// TODO: Consider using macros for stack creation to reduce boilerplate
+// or use a more structured approach to define resources.
+//
+// Typically, you would have a more complex structure here
+// that includes all the resources and their configurations.
+//
+// Also you could use self instead of passing stack around.
 pub struct MyFullStackStack;
 
 impl MyFullStackStack {
