@@ -25,11 +25,11 @@ impl MyFullStackStack {
 
         let _object_store = ObjectStore::new(&stack);
 
-        let _elastic_beanstalk = Backend::new(&stack);
-        let _amplify = Frontend::new(&stack);
-        let _reverse_proxy = ReverseProxy::new(&stack);
+        // let _elastic_beanstalk = Backend::new(&stack);
+        // let _amplify = Frontend::new(&stack);
+        // let _reverse_proxy = ReverseProxy::new(&stack);
 
-        let _database = Database::new(&stack);
+        // let _database = Database::new(&stack);
 
         Self
     }

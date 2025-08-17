@@ -14,7 +14,7 @@ pub fn synth_app(app: App) -> Result<(), Box<dyn std::error::Error>> {
             std::fs::create_dir("cdk.out")?;
         }
 
-        let filename = format!("cdk.out/{}-template.json", stack.get_stack_name());
+        let filename = format!("cdk.out/{}.json", stack.get_stack_name());
 
         std::fs::write(&filename, json_pretty)?;
     }
