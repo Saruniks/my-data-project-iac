@@ -19,7 +19,6 @@ aws-cdk-lib = { path = "/home/clear/jsii/output/rust/aws-cdk-lib", default-featu
     "aws_ec2", 
     "aws_ssm",
     "aws_logs",
-    "aws_rds",
     "aws_secretsmanager",
     "aws_lambda",
     "aws_applicationautoscaling",
@@ -30,11 +29,19 @@ aws-cdk-lib = { path = "/home/clear/jsii/output/rust/aws-cdk-lib", default-featu
     "aws_ecr",
     "aws_signer",
     "aws_cloudfront",
+    "aws_cloudfront_origins",
+    "aws_apigateway",
+    "aws_stepfunctions",
+    "aws_sagemaker",
+    "aws_kinesisfirehose",
+    "aws_cognito",
+    "aws_pinpoint",
     "aws_elasticloadbalancingv2",
     "aws_certificatemanager",
     "aws_kinesis",
     "aws_acmpca",
     "aws_route53",
+    "aws_dsql",
 ] }
 constructs = { path = "/home/clear/jsii/output/rust/constructs", default-features = true }
 dotenvy = "0.15.7"

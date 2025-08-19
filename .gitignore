@@ -1,3 +1,4 @@
 /target
 /cdk.out
 .env
+.vscode/settings.json
