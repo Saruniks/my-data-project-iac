@@ -28,6 +28,8 @@ impl MyFullStackStack {
 
         // let _elastic_beanstalk = Backend::new(&stack);
         let _frontend = Frontend::new(&stack, github_access_token);
+        let _backend = Backend::new(&stack);
+
         let _reverse_proxy = ReverseProxy::new(&stack);
 
         let _database = Database::new(&stack);
