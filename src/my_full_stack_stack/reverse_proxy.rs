@@ -5,7 +5,7 @@ impl ReverseProxy {
     pub fn new(stack: &aws_cdk_lib::Stack) -> Self {
         let amplify_origin = aws_cloudfront_origins::HttpOrigin::new(
             // TODO: Replace with your actual Amplify app domain
-            "main.d1qn8oe4agx36g.amplifyapp.com/".to_string(),
+            "main.d1qn8oe4agx36g.amplifyapp.com".to_string(),
             Some(aws_cloudfront_origins::HttpOriginProps {
                 ..Default::default()
             }),
