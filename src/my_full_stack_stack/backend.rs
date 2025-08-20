@@ -9,8 +9,43 @@ pub struct Backend {
 impl Backend {
     pub fn new(stack: &aws_cdk_lib::Stack, database_endpoint: String) -> Self {
         let lambda_code = r#"
+const { DsqlSigner } = require("@aws-sdk/dsql-signer");
+
+async function generateToken(hostname, region) {
+    const signer = new DsqlSigner({
+        hostname,
+        region,
+    });
+    try {
+        const token = await signer.getDbConnectAdminAuthToken();
+        return token;
+    } catch (error) {
+        console.error("Failed to generate token: ", error);
+        throw error;
+    }
+}
+
 exports.handler = async (event) => {
     console.log('Event:', JSON.stringify(event, null, 2));
+    
+    const databaseEndpoint = process.env.DATABASE_ENDPOINT;
+    const region = process.env.AWS_REGION || 'us-east-1';
+    
+    let dbConnectionResult = {};
+    
+    try {
+        const token = await generateToken(databaseEndpoint, region);
+        dbConnectionResult = {
+            success: true,
+            message: "Successfully generated DSQL token"
+        };
+    } catch (error) {
+        dbConnectionResult = {
+            success: false,
+            message: "Failed to connect to database",
+            error: error.message
+        };
+    }
     
     return {
         statusCode: 200,
@@ -20,6 +55,7 @@ exports.handler = async (event) => {
         body: JSON.stringify({
             message: 'Hello from Lambda!',
             timestamp: new Date().toISOString(),
+            dbConnectionTest: dbConnectionResult,
             event: event
         })
     };
