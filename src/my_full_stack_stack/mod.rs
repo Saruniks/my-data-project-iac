@@ -26,13 +26,14 @@ impl MyFullStackStack {
 
         let _object_store = ObjectStore::new(&stack);
 
+        let database = Database::new(&stack);
+
         // let _elastic_beanstalk = Backend::new(&stack);
         let _frontend = Frontend::new(&stack, github_access_token);
-        let _backend = Backend::new(&stack);
+        let backend = Backend::new(&stack, database.endpoint);
 
-        let _reverse_proxy = ReverseProxy::new(&stack);
+        let _reverse_proxy = ReverseProxy::new(&stack, backend.lambda_url);
 
-        let _database = Database::new(&stack);
 
         Self
     }

@@ -1,9 +1,13 @@
-use aws_cdk_lib::aws_lambda::{self, Code, CodeTrait, RuntimeTrait};
-
-pub struct Backend;
+use aws_cdk_lib::aws_lambda::{self, Code, CodeTrait, IFunctionTrait, RuntimeTrait};
+use aws_cdk_lib::aws_lambda::FunctionUrlTrait;
+use std::ops::Deref;
+use aws_cdk_lib::aws_lambda::FunctionTrait;
+pub struct Backend {
+    pub lambda_url: String,
+}
 
 impl Backend {
-    pub fn new(stack: &aws_cdk_lib::Stack) -> Self {
+    pub fn new(stack: &aws_cdk_lib::Stack, database_endpoint: String) -> Self {
         let lambda_code = r#"
 exports.handler = async (event) => {
     console.log('Event:', JSON.stringify(event, null, 2));
@@ -24,7 +28,7 @@ exports.handler = async (event) => {
 
         let inline_code = Code::from_inline(lambda_code.to_string());
 
-        let _lambda = aws_lambda::Function::new(stack, "MyDataProjectLambda".to_string(), 
+        let lambda = aws_lambda::Function::new(stack, "MyDataProjectLambda".to_string(), 
         aws_lambda::FunctionProps {
             // TODO: Generate Rust-style statics
             runtime: aws_lambda::Runtime::NODEJS_18_X(),
@@ -33,6 +37,17 @@ exports.handler = async (event) => {
             ..Default::default()
         });
 
-        Self
+        lambda.add_environment("DATABASE_ENDPOINT".to_string(), database_endpoint, None);
+
+        let function_url = lambda.add_function_url(
+            Some(aws_lambda::FunctionUrlOptions {
+                auth_type: Some(aws_lambda::FunctionUrlAuthType::None),
+                ..Default::default()
+            })
+        );
+
+        Self {
+            lambda_url: FunctionUrlTrait::get_url(function_url.deref()),
+        }
     }
 }
