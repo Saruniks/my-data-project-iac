@@ -1,6 +1,5 @@
-use aws_cdk_lib::aws_lambda::{self, Code, CodeTrait, IFunctionTrait, RuntimeTrait};
+use aws_cdk_lib::aws_lambda::{self, CodeTrait, IFunctionTrait, RuntimeTrait};
 use aws_cdk_lib::aws_s3::BucketTrait;
-use aws_cdk_lib::aws_s3_assets;
 use aws_cdk_lib::aws_lambda::FunctionUrlTrait;
 use std::ops::Deref;
 use aws_cdk_lib::aws_lambda::FunctionTrait;
