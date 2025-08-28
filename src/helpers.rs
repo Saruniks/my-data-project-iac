@@ -5,8 +5,6 @@ use aws_cdk_lib::{cx_api::CloudAssemblyTrait, App, StageTrait};
 pub fn synth_app(app: App) -> Result<(), Box<dyn std::error::Error>> {
     let cloud_assembly = app.synth(None);
 
-    let stacks = cloud_assembly.get_stacks();
-
     // TODO: Is there a way to avoid ambiguity in cases like these while generating Rust code?
     let assembly_dir = CloudAssemblyTrait::get_directory(cloud_assembly.deref());
     println!("Cloud assembly directory: {}", assembly_dir);
