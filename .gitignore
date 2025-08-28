@@ -3,3 +3,5 @@
 .env
 .vscode/settings.json
 /.cargo/
+.vscode/tasks.json
+restart-rust-analyzer.sh

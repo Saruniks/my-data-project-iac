@@ -21,7 +21,7 @@ pub struct MyFullStackStack;
 
 impl MyFullStackStack {
     // TODO: Instead of passing github_access_token we could extend the stack properties with macros
-    pub fn new(app: &aws_cdk_lib::App, github_access_token: String) -> Self {
+    pub fn new(app: &aws_cdk_lib::App, github_access_token: String, lambda_zip_path: String) -> Self {
         let stack = aws_cdk_lib::Stack::new(Some(app), Some("MyDataProjectStack".to_string()), None);
 
         let _object_store = ObjectStore::new(&stack);
@@ -30,7 +30,7 @@ impl MyFullStackStack {
 
         // let _elastic_beanstalk = Backend::new(&stack);
         let _frontend = Frontend::new(&stack, github_access_token);
-        let backend = Backend::new(&stack, database.endpoint);
+        let backend = Backend::new(&stack, database.endpoint, lambda_zip_path);
 
         let _reverse_proxy = ReverseProxy::new(&stack, backend.lambda_url);
 
