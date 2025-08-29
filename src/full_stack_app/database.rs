@@ -18,7 +18,7 @@ impl Database {
         // TODO: Check if there's a more idiomatic way to get the endpoint
         let cluster_id = resource.get_attr_identifier();
         let endpoint = format!("{}.dsql.us-east-1.on.aws", cluster_id);
-        
+
         Self { endpoint }
     }
 }

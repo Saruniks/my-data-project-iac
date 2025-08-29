@@ -1,6 +1,6 @@
 use std::ops::Deref;
 
-use aws_cdk_lib::{cx_api::CloudAssemblyTrait, App, StageTrait};
+use aws_cdk_lib::{App, StageTrait, cx_api::CloudAssemblyTrait};
 
 pub fn synth_app(app: App) -> Result<(), Box<dyn std::error::Error>> {
     let cloud_assembly = app.synth(None);
@@ -19,7 +19,10 @@ pub fn synth_app(app: App) -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 
-fn copy_directory_contents(src: &str, dest: &std::path::Path) -> Result<(), Box<dyn std::error::Error>> {
+fn copy_directory_contents(
+    src: &str,
+    dest: &std::path::Path,
+) -> Result<(), Box<dyn std::error::Error>> {
     for entry in std::fs::read_dir(src)? {
         let entry = entry?;
         let file_type = entry.file_type()?;
