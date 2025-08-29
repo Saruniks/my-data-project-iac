@@ -18,10 +18,10 @@ use database::Database;
 // Typically, you would have a more complex structure here
 // that includes all the resources and their configurations.
 //
-// Also you could use self instead of passing stack around.
-pub struct MyFullStackStack;
+// Also you could uses self instead of passing stack around.
+pub struct FullStackApp;
 
-impl MyFullStackStack {
+impl FullStackApp {
     // TODO: Instead of passing github_access_token we could extend the stack properties with macros
     pub fn new(app: &aws_cdk_lib::App, github_access_token: String, lambda_zip_path: String, frontend_github_repository: String) -> Self {
         let stack = aws_cdk_lib::Stack::new(Some(app), Some("MyDataProjectStack".to_string()), None);

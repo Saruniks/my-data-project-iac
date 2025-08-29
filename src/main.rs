@@ -1,7 +1,7 @@
 mod helpers;
-mod my_full_stack_stack;
+mod full_stack_app;
 
-use my_full_stack_stack::MyFullStackStack;
+use full_stack_app::FullStackApp;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     dotenvy::dotenv().ok();
@@ -16,7 +16,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let app = aws_cdk_lib::App::new(None);
 
-    let _my_stack = MyFullStackStack::new(&app, github_access_token, lambda_zip_path, frontend_github_repository);
+    let _my_stack = FullStackApp::new(&app, github_access_token, lambda_zip_path, frontend_github_repository);
 
     helpers::synth_app(app)?;
 
