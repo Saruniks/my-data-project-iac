@@ -4,7 +4,7 @@ This project serves as a **playground** for the initial version of AWS CDK Rust.
 
 ## Project Overview
 
-**Infrastructure-as-code (IaC)** project for a simple full-stack AWS application using **AWS CDK Rust**.  
+**Infrastructure-as-code (IaC)** project for a simple full-stack application using **AWS CDK Rust**.  
 
 The components include:
 - **Frontend**: AWS Amplify hosting for a web app deployed from a GitHub repository  
