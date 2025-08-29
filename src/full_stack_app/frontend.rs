@@ -1,4 +1,6 @@
 use aws_cdk_lib::aws_amplify::{self, CfnAppProps, CfnAppTrait, CfnBranchProps};
+use aws_cdk_lib::aws_iam;
+use aws_cdk_lib::aws_iam::{ManagedPolicyTrait, IRoleTrait};
 
 pub struct Frontend {
     pub amplify_domain: String,
@@ -6,12 +8,20 @@ pub struct Frontend {
 
 impl Frontend {
     pub fn new(stack: &aws_cdk_lib::Stack, github_access_token: String, github_repository: String) -> Self {
+        let amplify_role = aws_iam::Role::new(stack, "AmplifyDeployRole".to_string(), aws_iam::RoleProps {
+            assumed_by: Box::new(aws_iam::ServicePrincipal::new("amplify.amazonaws.com".to_string(), None)),
+            managed_policies: Some(vec![
+                aws_iam::ManagedPolicy::from_aws_managed_policy_name("service-role/AmplifyBackendDeployFullAccess".to_string()),
+            ]),
+            ..Default::default()
+        });
+
         let amplify = aws_amplify::CfnApp::new(stack, "MyDataProjectAmplifyInstance".to_string(), aws_amplify::CfnAppProps {
             name: "MyDataProjectFrontend".to_string(),
             access_token: Some(github_access_token),
             repository: Some(github_repository),
             platform: Some("WEB_COMPUTE".to_string()), // TODO: Use generated constants
-
+            iam_service_role: Some(amplify_role.get_role_arn()),
             ..CfnAppProps::default()
         });
 
