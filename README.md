@@ -1,14 +1,14 @@
-# AWS CDK Rust Bindings Playground
+# AWS CDK Rust Playground
 
-This project serves as a playground for testing the initial AWS CDK library Rust bindings.
+This project serves as a playground for testing the initial version of AWS CDK Rust.
 
 ## Project Overview
 
-This infrastructure-as-code (IaC) project deploys a simple full-stack AWS application using the generated Rust bindings for AWS CDK. The components include:
+Infrastructure-as-code (IaC) project for a simple full-stack AWS application using the generated Rust bindings for AWS CDK. The components include:
 
 - **Frontend**: AWS Amplify hosting for a web application from a GitHub repository
 - **Backend**: AWS Lambda function
-- **Database**: Amazon DSQL database
+- **Database**: Amazon Aurora DSQL database
 - **Networking**: CloudFront distribution serving as a reverse proxy
 
 ## Current State
