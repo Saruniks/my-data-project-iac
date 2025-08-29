@@ -6,11 +6,11 @@ This project serves as a **playground** for the initial version of AWS CDK Rust.
 
 **Infrastructure-as-code (IaC)** project for a simple full-stack application using **AWS CDK Rust**.  
 
-The components include:
-- **Frontend**: AWS Amplify hosting for a web app deployed from a GitHub repository  
-- **Backend**: AWS Lambda function  
-- **Database**: Amazon Aurora DSQL database  
-- **Networking**: CloudFront distribution serving as a reverse proxy  
+The components:
+- **Frontend**: AWS Amplify
+- **Backend**: AWS Lambda  
+- **Database**: Amazon Aurora DSQL  
+- **Reverse Proxy**: CloudFront  
 
 ## Environment Variables
 
